@@ -10,7 +10,7 @@ export const routes = [
             {path: '', component: UserStart},
             //{path: ':id', component: UserDetail },
             {path: ':id', component: UserDetail, props: true },
-            {path: ':id/edit', component: UserEdit, name: 'userEdit' }
+            {path: ':id/edit', component: UserEdit, props: true, name: 'userEdit' }
         ]},
     {path: '/usuari', redirect: '/user'},
     {path: '*', redirect: '/'}

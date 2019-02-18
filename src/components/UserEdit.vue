@@ -1,14 +1,38 @@
 <template>
     <div>
         <h4 class="subtitle is-4">User Edit</h4>
-        <p>User Id: {{ this.$route.params.id }}</p>
+
+        <p>User Id: {{ user.id }}</p>
+        <p>User Name: {{ user.name }}</p>
+
+        Detail: <input class="input" type="text" v-model="detailValue" v-bind:placeholder="user.detail">
+
+        <button class="button is-danger" v-on:click="setUserDetail(detailValue)">Save changes</button>
+
+        <br><br><br>
         <p>Locale: {{ this.$route.query.locale }}</p>
     </div>
 </template>
 
 <script>
+    import { store } from "../store/store.js"
+
     export default {
-        name: "UserEdit"
+        name: "UserEdit",
+        props:['id'],
+
+        data: function(){
+            return{
+                user: store.getUser(this.id),
+                detailValue: ""
+            }
+        },
+
+        methods:{
+            setUserDetail(){
+
+            }
+        }
     }
 </script>
 
