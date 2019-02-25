@@ -30,7 +30,8 @@
 
         methods:{
             setUserDetail(){
-
+                store.setUserDetail(this.id, this.detailValue);
+                this.$router.push('/user/' + this.id);
             }
         }
     }

@@ -26,5 +26,10 @@ export const store = {
 
     getUser(id){
         return this.state.users.find((user) => user.id == id);
+    },
+
+    setUserDetail(id, value){
+        var user = this.getUser(id);
+        user.detail = value;
     }
 }
