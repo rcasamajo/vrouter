@@ -5,7 +5,7 @@
         <p>User Id: {{ user.id }}</p>
         <p>User Name: {{ user.name }}</p>
 
-        Detail: <input class="input" type="text" v-model="detailValue" v-bind:placeholder="user.detail">
+        Detail: <input class="input" type="text" v-model="detailValue">
 
         <button class="button is-danger" v-on:click="setUserDetail(detailValue)">Save changes</button>
 
@@ -33,6 +33,10 @@
                 store.setUserDetail(this.id, this.detailValue);
                 this.$router.push('/user/' + this.id);
             }
+        },
+
+        created: function(){
+            this.detailValue = this.user.detail;
         }
     }
 </script>
