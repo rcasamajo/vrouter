@@ -38,6 +38,10 @@ export const store = new Vuex.Store({
         userDetail(state, payload) {
             payload.user.detail = payload.value;
         },
+
+        addUser(state, payload) {
+            state.users.push(payload);
+        }
     },
 
     actions: {
@@ -45,6 +49,10 @@ export const store = new Vuex.Store({
             var user = context.getters.user(payload.id);
 
             context.commit('userDetail', {user: user, value: payload.value});
+        },
+
+        addUser(context, payload) {
+            context.commit('addUser', payload);
         }
     }
 });

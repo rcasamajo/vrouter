@@ -7,7 +7,8 @@
 
         Detail: <input class="input" type="text" v-model="detailValue">
 
-        <button class="button is-danger" v-on:click="setUserDetail(detailValue)">Save changes</button>
+        <button class="button is-success" v-on:click="setUserDetail(detailValue)">Save changes</button>
+        <button class="button is-danger" v-on:click="cancel">Cancel</button>
 
         <br><br><br>
         <p>Locale: {{ this.$route.query.locale }}</p>
@@ -35,7 +36,12 @@
             setUserDetail(){
                 this.$store.dispatch('setUserDetail', { id: this.id, value: this.detailValue});
                 this.$router.push('/user/' + this.id);
+            },
+
+            cancel(){
+                this.$router.push('/user/' + this.id);
             }
+
         },
 
         created: function(){
