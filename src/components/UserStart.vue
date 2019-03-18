@@ -9,14 +9,12 @@
 </template>
 
 <script>
-    import { store } from "../store/store.js"
-
     export default {
         name: "UserStart",
 
-        data: function(){
-            return{
-                userList: store.getUserList()
+        computed: {
+            userList() {
+                return this.$store.getters.userList;
             }
         }
     }

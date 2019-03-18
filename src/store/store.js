@@ -1,5 +1,9 @@
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-export const store = {
+Vue.use(Vuex);
+
+export const store = new Vuex.Store({
     state: {
         users: [
             {
@@ -20,16 +24,27 @@ export const store = {
         ]
     },
 
-    getUserList(){
-        return this.state.users;
+    getters: {
+        userList: state => {
+            return state.users;
+        },
+
+        user: (state) => (id) => {
+            return state.users.find((user) => user.id == id);
+        }
     },
 
-    getUser(id){
-        return this.state.users.find((user) => user.id == id);
+    mutations: {
+        userDetail(state, payload) {
+            payload.user.detail = payload.value;
+        },
     },
 
-    setUserDetail(id, value){
-        var user = this.getUser(id);
-        user.detail = value;
+    actions: {
+        setUserDetail(context, payload) {
+            var user = context.getters.user(payload.id);
+
+            context.commit('userDetail', {user: user, value: payload.value});
+        }
     }
-}
+});

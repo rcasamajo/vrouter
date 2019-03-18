@@ -15,22 +15,25 @@
 </template>
 
 <script>
-    import { store } from "../store/store.js"
-
     export default {
         name: "UserEdit",
         props:['id'],
 
         data: function(){
             return{
-                user: store.getUser(this.id),
                 detailValue: ""
+            }
+        },
+
+        computed: {
+            user() {
+                return this.$store.getters.user(this.id);
             }
         },
 
         methods:{
             setUserDetail(){
-                store.setUserDetail(this.id, this.detailValue);
+                this.$store.dispatch('setUserDetail', { id: this.id, value: this.detailValue});
                 this.$router.push('/user/' + this.id);
             }
         },

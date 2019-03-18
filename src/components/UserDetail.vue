@@ -11,15 +11,13 @@
 </template>
 
 <script>
-    import { store } from "../store/store.js"
-
     export default {
         name: "UserDetail",
         props:['id'],
 
-        data: function(){
-            return{
-                user: store.getUser(this.id)
+        computed: {
+            user() {
+                return this.$store.getters.user(this.id);
             }
         },
 
