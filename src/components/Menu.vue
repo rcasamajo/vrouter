@@ -3,6 +3,7 @@
         <div class="navbar-menu">
             <router-link to="/" class="navbar-item" active-class="is-active" exact>Home</router-link>
             <router-link to="/user" class="navbar-item" active-class="is-active">User</router-link>
+            <router-link to="/favs" class="navbar-item" active-class="is-active">Favs</router-link>
         </div>
     </nav>
 </template>

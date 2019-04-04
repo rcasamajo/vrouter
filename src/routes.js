@@ -4,9 +4,11 @@ import UserStart from './components/UserStart.vue';
 import AddUser from './components/AddUser.vue';
 import UserDetail from './components/UserDetail.vue';
 import UserEdit from './components/UserEdit.vue';
+import Favs from './components/Favs.vue';
 
 export const routes = [
     {path: '', component: Home},
+    {path: '/favs', component: Favs},
     {path: '/user', component: User, children: [
             {path: '', component: UserStart},
             {path: 'add', component: AddUser},
