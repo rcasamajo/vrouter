@@ -24,11 +24,6 @@ export const store = new Vuex.Store({
         ],
 
         favs: [
-            {
-                id: 1,
-                name: "User_1",
-                detail: "Info 1"
-            }
         ]
     },
 
@@ -43,6 +38,10 @@ export const store = new Vuex.Store({
 
         favsList: state => {
             return state.favs;
+        },
+
+        fav: (state) => (id) => {
+            return state.favs.find((user) => user.id == id);
         }
     },
 
@@ -69,6 +68,11 @@ export const store = new Vuex.Store({
 
         addUser(context, payload) {
             context.commit('addUser', payload);
+        },
+
+        addFav(context, payload) {
+            if (context.getters.fav(payload.id) == null)
+                context.commit('addFav', payload);
         }
     }
 });
