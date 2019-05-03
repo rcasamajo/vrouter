@@ -9,14 +9,14 @@
                     <router-link v-bind:to="'user/' + usr.id" tag="li" active-class="is-active"><a>{{usr.name }}</a></router-link>
                 </div>
                 <div class="tile notification is-2">
-                    <a class="button is-small" v-on:click="add(usr)">Add to favs</a>
+                    <a class="button is-small" v-on:click="addFav(usr)">Add to favs</a>
                 </div>
             </div>
 
             <br>
         </ul>
 
-        <button class="button is-warning" v-on:click="add">Add user</button>
+        <button class="button is-warning" v-on:click="addUser">Add user</button>
     </div>
 </template>
 
@@ -31,12 +31,16 @@
         },
 
         methods:{
-            add(usr){
+            addFav(usr){
                 this.$store.dispatch('addFav', { id: usr.id,
                     name: usr.name,
                     detail: usr.detail});
 
                 this.$router.push('/favs');
+            },
+
+            addUser(){
+                this.$router.push('user/add');
             }
         }
     }
